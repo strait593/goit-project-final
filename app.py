@@ -3,7 +3,7 @@ import pickle
 import pandas as pd
 
 def load_model():
-    with open('model_logistic.pkl', 'rb') as f:
+    with open('Models/model_logistic.pkl', 'rb') as f:
         model = pickle.load(f)
     return model
 
