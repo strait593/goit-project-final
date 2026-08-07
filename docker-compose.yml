@@ -1,0 +1,23 @@
+services:
+  streamlit:
+    build: .
+    container_name: streamlit-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./app.py:/app/app.py
+      - ./model_logistic.pkl:/app/model_logistic.pkl
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_CLIENT_LOGGER_LEVEL=error
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8501').read()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
