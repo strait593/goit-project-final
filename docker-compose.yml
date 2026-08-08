@@ -6,7 +6,6 @@ services:
       - "8501:8501"
     volumes:
       - ./app.py:/app/app.py
-      - ./model_logistic.pkl:/app/model_logistic.pkl
     environment:
       - STREAMLIT_SERVER_HEADLESS=true
       - STREAMLIT_CLIENT_LOGGER_LEVEL=error

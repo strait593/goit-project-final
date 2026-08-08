@@ -6,8 +6,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY app.py model_logistic.pkl ./
+# Copy application code and model
+COPY . .
 
 EXPOSE 8501
 
